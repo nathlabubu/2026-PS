@@ -1,0 +1,35 @@
+[
+    {
+        "nome": "manu",
+        "especie": "cachorro",
+        "peso": 67.0,
+        "altura": 1.67,
+        "nome_dono": "nathaly",
+        "telefone_dono": "4299941165",
+        "data_nascimento": "11112010",
+        "vacinado": true,
+        "hospedado": false
+    },
+    {
+        "nome": "lala",
+        "especie": "gato",
+        "peso": 6.0,
+        "altura": 0.45,
+        "nome_dono": "nathaly",
+        "telefone_dono": "42999941165",
+        "data_nascimento": "25022020",
+        "vacinado": false,
+        "hospedado": false
+    },
+    {
+        "nome": "luis",
+        "especie": "cachorro",
+        "peso": 8.0,
+        "altura": 1.6,
+        "nome_dono": "nathalyt",
+        "telefone_dono": "42999941165",
+        "data_nascimento": "12022020",
+        "vacinado": false,
+        "hospedado": false
+    }
+]
