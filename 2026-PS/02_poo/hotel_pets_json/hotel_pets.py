@@ -9,7 +9,7 @@ Autor      : Nathaly
 import json
 import os
 
-ARQUIVO_JSON = "pets.json"
+ARQUIVO_JSON = "2026-PS/02_poo/hotel_pets_json/pets.json"
 
 
 class Pet:

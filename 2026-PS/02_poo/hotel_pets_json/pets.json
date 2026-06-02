@@ -31,5 +31,16 @@
         "data_nascimento": "12022020",
         "vacinado": false,
         "hospedado": false
+    },
+    {
+        "nome": "çiçi",
+        "especie": "cachorro",
+        "peso": 67.0,
+        "altura": 1.4,
+        "nome_dono": "nathaly",
+        "telefone_dono": "42999941165",
+        "data_nascimento": "29022010",
+        "vacinado": false,
+        "hospedado": false
     }
 ]
