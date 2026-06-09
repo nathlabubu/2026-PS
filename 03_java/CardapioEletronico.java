@@ -7,33 +7,33 @@ public class CardapioEletronico {
         Scanner entrada = new Scanner(System.in);
         Random random = new Random();
 
-        // Variáveis acumuladoras do carrinho
-        int qtdXBurguer = 0, qtdPizza = 0, qtdBatata = 0, qtdRefrigerante = 0, qtdSorvete = 0;
+        // Variáveis acumuladoras do carrinho (Inspirado em Steven Universe)
+        int qtdBiscoitoGatinho = 0, qtdBatataFrita = 0, qtdRosquinha = 0, qtdChaChapeu = 0, qtdSuperSanduiche = 0;
         double totalPedido = 0.0;
 
         boolean finalizando = false;
 
         // --- LOOP PRINCIPAL DO CARDÁPIO ---
         while (!finalizando) {
-            System.out.println("===========================");
-            System.out.println("FAST FOOD IFPR");
-            System.out.println("===========================");
-            System.out.println("1 - X-Burguer .......... R$ 18,00");
-            System.out.println("2 - Pizza .............. R$ 35,00");
-            System.out.println("3 - Batata Frita ....... R$ 12,00");
-            System.out.println("4 - Refrigerante ....... R$ 8,00");
-            System.out.println("5 - Sorvete ............ R$ 10,00");
+            System.out.println("=================================");
+            System.out.println("     🌟 BIG ROSQUINHA TOTEM 🌟   ");
+            System.out.println("=================================");
+            System.out.println("1 - Biscoito Gatinho ..... R$ 6,00");
+            System.out.println("2 - Batata Frita (Peedee)  R$ 12,00");
+            System.out.println("3 - Rosquinha de Leão .... R$ 5,50");
+            System.out.println("4 - Chá de Chapéu ........ R$ 4,00");
+            System.out.println("5 - Super Sanduíche ...... R$ 25,00");
             System.out.println("6 - Finalizar Pedido");
-            System.out.println("===========================");
+            System.out.println("=================================");
             System.out.println();
 
-            System.out.print("Escolha: ");
+            System.out.print("Escolha seu item: ");
             int opcao = entrada.nextInt();
 
-            // Se escolher a opção 6 (Finalizar Pedido) direto no menu
+            // Opção 6: Finalizar Pedido direto no menu
             if (opcao == 6) {
                 if (totalPedido == 0) {
-                    System.out.println("\nSeu carrinho está vazio! Selecione um item antes.\n");
+                    System.out.println("\nSeu carrinho está vazio! Escolha uma comida antes de ir.\n");
                     continue;
                 }
                 break; // Sai do loop para exibir o resumo final
@@ -41,7 +41,7 @@ public class CardapioEletronico {
 
             // Trata opção inválida do cardápio
             if (opcao < 1 || opcao > 5) {
-                System.out.println("\nOpção inválida. Tente novamente.\n");
+                System.out.println("\nOpção inválida! As Gems quebraram o sistema, tente novamente.\n");
                 continue;
             }
 
@@ -49,90 +49,90 @@ public class CardapioEletronico {
             int quantidade = entrada.nextInt();
 
             if (quantidade <= 0) {
-                System.out.println("Quantidade inválida!\n");
+                System.out.println("Quantidade inválida! Steven não consegue comer menos que zero.\n");
                 continue;
             }
 
-            // --- SWITCH: PROCESSA O ITEM E MOSTRA O NOME/VALOR SELECIONADO ---
+            // --- SWITCH COM O CARDÁPIO DE BEACH CITY ---
             switch (opcao) {
                 case 1:
-                    System.out.println("\nItem selecionado: X-Burguer (R$ 18,00)");
-                    qtdXBurguer += quantidade;
-                    totalPedido += 18.00 * quantidade;
+                    System.out.println("\nItem selecionado: Biscoito Gatinho! (R$ 6,00) - Ele morde de volta!");
+                    qtdBiscoitoGatinho += quantidade;
+                    totalPedido += 6.00 * quantidade;
                     break;
                 case 2:
-                    System.out.println("\nItem selecionado: Pizza (R$ 35,00)");
-                    qtdPizza += quantidade;
-                    totalPedido += 35.00 * quantidade;
-                    break;
-                case 3:
-                    System.out.println("\nItem selecionado: Batata Frita (R$ 12,00)");
-                    qtdBatata += quantidade;
+                    System.out.println("\nItem selecionado: Batata Frita do Beach City Fries! (R$ 12,00)");
+                    qtdBatataFrita += quantidade;
                     totalPedido += 12.00 * quantidade;
                     break;
+                case 3:
+                    System.out.println("\nItem selecionado: Rosquinha de Leão! (R$ 5,50)");
+                    qtdRosquinha += quantidade;
+                    totalPedido += 5.50 * quantidade;
+                    break;
                 case 4:
-                    System.out.println("\nItem selecionado: Refrigerante (R$ 8,00)");
-                    qtdRefrigerante += quantidade;
-                    totalPedido += 8.00 * quantidade;
+                    System.out.println("\nItem selecionado: Chá de Chapéu! (R$ 4,00)");
+                    qtdChaChapeu += quantidade;
+                    totalPedido += 4.00 * quantidade;
                     break;
                 case 5:
-                    System.out.println("\nItem selecionado: Sorvete (R$ 10,00)");
-                    qtdSorvete += quantidade;
-                    totalPedido += 10.00 * quantidade;
+                    System.out.println("\nItem selecionado: Super Sanduíche da união das Gems! (R$ 25,00)");
+                    qtdSuperSanduiche += quantidade;
+                    totalPedido += 25.00 * quantidade;
                     break;
             }
 
             System.out.println("Item adicionado ao pedido!");
 
-            // --- PERGUNTA DE FLUXO (PERMITE CONTINUAR OU IR DE FATO PRO PAGAMENTO) ---
+            // Pergunta de fluxo para continuar ou pagar
             System.out.println("\nDeseja continuar comprando?");
-            System.out.println("1 - Sim (Voltar ao Cardápio)");
-            System.out.println("2 - Finalizar (Ir para o Pagamento)");
+            System.out.println("1 - Sim (Ficar na Big Rosquinha)");
+            System.out.println("2 - Finalizar (Chamar o Lars para pagar)");
             System.out.println();
             System.out.print("Escolha: ");
             int resposta = entrada.nextInt();
 
             if (resposta == 2) {
-                finalizando = true; // Quebra o while e vai para o final do código
+                finalizando = true; 
             }
             System.out.println();
         }
 
         // --- TELA DE RESUMO COMPLETO ---
-        System.out.println("===========================");
-        System.out.println("RESUMO DO PEDIDO");
-        System.out.println("===========================");
+        System.out.println("=================================");
+        System.out.println("        SACOLA DO STEVEN         ");
+        System.out.println("=================================");
         
-        if (qtdXBurguer > 0) System.out.printf("%dx X-Burguer ........ R$ %.2f\n", qtdXBurguer, (qtdXBurguer * 18.00));
-        if (qtdPizza > 0) System.out.printf("%dx Pizza ............ R$ %.2f\n", qtdPizza, (qtdPizza * 35.00));
-        if (qtdBatata > 0) System.out.printf("%dx Batata Frita ..... R$ %.2f\n", qtdBatata, (qtdBatata * 12.00));
-        if (qtdRefrigerante > 0) System.out.printf("%dx Refrigerante ..... R$ %.2f\n", qtdRefrigerante, (qtdRefrigerante * 8.00));
-        if (qtdSorvete > 0) System.out.printf("%dx Sorvete .......... R$ %.2f\n", qtdSorvete, (qtdSorvete * 10.00));
+        if (qtdBiscoitoGatinho > 0) System.out.printf("%dx Biscoito Gatinho .... R$ %.2f\n", qtdBiscoitoGatinho, (qtdBiscoitoGatinho * 6.00));
+        if (qtdBatataFrita > 0) System.out.printf("%dx Batata Frita ........ R$ %.2f\n", qtdBatataFrita, (qtdBatataFrita * 12.00));
+        if (qtdRosquinha > 0) System.out.printf("%dx Rosquinha de Leão ... R$ %.2f\n", qtdRosquinha, (qtdRosquinha * 5.50));
+        if (qtdChaChapeu > 0) System.out.printf("%dx Chá de Chapéu ....... R$ %.2f\n", qtdChaChapeu, (qtdChaChapeu * 4.00));
+        if (qtdSuperSanduiche > 0) System.out.printf("%dx Super Sanduíche ..... R$ %.2f\n", qtdSuperSanduiche, (qtdSuperSanduiche * 25.00));
         
         System.out.println();
-        System.out.printf("TOTAL: R$ %.2f\n", totalPedido);
-        System.out.println("===========================");
+        System.out.printf("TOTAL DA COMPRA: R$ %.2f\n", totalPedido);
+        System.out.println("=================================");
 
         // --- ETAPA DE PAGAMENTO ---
         System.out.println("\nForma de pagamento:");
-        System.out.println("1 - Dinheiro");
-        System.out.println("2 - Cartão");
-        System.out.println("3 - PIX");
+        System.out.println("1 - Dinheiro (Dólares de Beach City)");
+        System.out.println("2 - Cartão do Greg Universe");
+        System.out.println("3 - PIX Crystal Gem");
         System.out.println();
-        System.out.print("Escolha: ");
+        System.out.print("Escolha como pagar: ");
         int formaPagamento = entrada.nextInt();
 
         if (formaPagamento >= 1 && formaPagamento <= 3) {
-            System.out.println("\nPagamento realizado com sucesso!");
+            System.out.println("\nPagamento realizado com sucesso! Sadie já carimbou sua nota.");
         } else {
-            System.out.println("\nForma de pagamento inválida. Processando com padrão.");
+            System.out.println("\nForma de pagamento inválida. Cebola roubou seu dinheiro?");
         }
 
         // --- EMISSÃO DA SENHA DO PEDIDO ---
         int numeroPedido = random.nextInt(900) + 100;
 
         System.out.println("\nPedido Nº " + numeroPedido);
-        System.out.println("Aguarde a chamada do seu pedido.");
+        System.out.println("Aguarde na praia pela chamada do seu pedido. Acredite no Steven!");
 
         entrada.close();
     }
