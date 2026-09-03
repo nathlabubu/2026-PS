@@ -1,4 +1,12 @@
-public class produto {
+/*
+* Disciplina: 2026-PS
+* Esdudante : Nathaly Vitória de Ananias Fernandes 
+* Data      : 2026.08.11
+* Projeto   : aula35-clinica
+* Arquivo   : Aluno.java
+*/
+
+public class Produto {
 
     // Tarefa 1: Atributos privados (Encapsulamento)
     private int codigo;

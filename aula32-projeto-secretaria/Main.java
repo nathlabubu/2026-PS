@@ -20,7 +20,7 @@ public class Main {
         do {
             // Nível C: Identidade visível e personalização do sistema
             System.out.println("==================================================");
-            System.out.println("  SISTEMA DE SECRETARIA - CAMPUS [SEU NOME]");
+            System.out.println("  SISTEMA DE SECRETARIA - CAMPUS NATHALY");
             System.out.println("==================================================");
             System.out.println("1 - Cadastrar Aluno");
             System.out.println("2 - Listar Todos os Alunos");
@@ -35,7 +35,7 @@ public class Main {
             try {
                 opcao = Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("\n Opção inválida! Digite apenas um número do menu.");
+                System.out.println(" Opção inválida! Digite apenas um número do menu.");
                 continue;
             }
 
@@ -62,10 +62,10 @@ public class Main {
                     gerarRelatorio();
                     break;
                 case 0:
-                    System.out.println("\nEncerando o sistema da secretaria... Até logo!");
+                    System.out.println("Encerando o sistema da secretaria... Até logo!");
                     break;
                 default:
-                    System.out.println("\n Opção inexistente. Tente novamente.");
+                    System.out.println(" Opção inexistente. Tente novamente.");
             }
 
         } while (opcao != 0);
@@ -73,7 +73,7 @@ public class Main {
 
     // Nível C, B e A: Cadastrar com validação de duplicidade e validação de campo vazio (Melhoria Nível A)
     private static void cadastrar() {
-        System.out.println("\n--- [ NOVO CADASTRO DE ALUNO ] ---");
+        System.out.println("--- [ NOVO CADASTRO DE ALUNO ] ---");
 
         int matricula = lerInteiroValido("Digite a matrícula: ");
 
@@ -96,7 +96,7 @@ public class Main {
 
     // Nível C e A: Listar enxuto utilizando toString()
     private static void listar() {
-        System.out.println("\n--- [ LISTAGEM DE ALUNOS ] ---");
+        System.out.println("--- [ LISTAGEM DE ALUNOS ] ---");
         if (gaveteiro.isEmpty()) {
             System.out.println("Nenhum aluno cadastrado no momento.");
             return;
@@ -119,7 +119,7 @@ public class Main {
 
     // Submenu auxiliar para exibição da busca
     private static void buscarPorMatriculaMenu() {
-        System.out.println("\n--- [ BUSCA POR MATRÍCULA ] ---");
+        System.out.println("--- [ BUSCA POR MATRÍCULA ] ---");
         int mat = lerInteiroValido("Digite a matrícula para consulta: ");
         Aluno aluno = buscarPorMatricula(mat);
 
@@ -133,7 +133,7 @@ public class Main {
 
     // Nível A (Melhoria): Busca complementar por nome
     private static void buscarPorNome() {
-        System.out.println("\n--- [ BUSCA POR NOME ] ---");
+        System.out.println("--- [ BUSCA POR NOME ] ---");
         String termo = lerTextoNaoVazio("Digite o nome ou parte do nome: ").toLowerCase();
         boolean encontrado = false;
 
@@ -151,7 +151,7 @@ public class Main {
 
     // Nível B: Atualização reutilizando a busca
     private static void atualizar() {
-        System.out.println("\n--- [ ATUALIZAR CADASTRO ] ---");
+        System.out.println("--- [ ATUALIZAR CADASTRO ] ---");
         int mat = lerInteiroValido("Digite a matrícula do aluno a atualizar: ");
         Aluno aluno = buscarPorMatricula(mat);
 
@@ -175,12 +175,12 @@ public class Main {
 
     // Nível B: Remoção reutilizando a busca e com confirmação prévia
     private static void remover() {
-        System.out.println("\n--- [ REMOVER ALUNO ] ---");
+        System.out.println("--- [ REMOVER ALUNO ] ---");
         int mat = lerInteiroValido("Digite a matrícula do aluno a remover: ");
         Aluno aluno = buscarPorMatricula(mat);
 
         if (aluno == null) {
-            System.out.println("⚠️ Aluno não localizado. Nenhuma exclusão efetuada.");
+            System.out.println(" Aluno não localizado. Nenhuma exclusão efetuada.");
             return;
         }
 
@@ -189,7 +189,7 @@ public class Main {
 
         if (confirmacao.equalsIgnoreCase("S")) {
             gaveteiro.remove(aluno);
-            System.out.println("✅ Ficha do aluno removida com sucesso!");
+            System.out.println("Ficha do aluno removida com sucesso!");
         } else {
             System.out.println("Operação cancelada.");
         }
@@ -197,7 +197,7 @@ public class Main {
 
     // Nível A: Relatório com contagem por curso informado em tempo de execução
     private static void gerarRelatorio() {
-        System.out.println("\n--- [ RELATÓRIO GERAL ] ---");
+        System.out.println("--- [ RELATÓRIO GERAL ] ---");
         System.out.println("Total de alunos cadastrados: " + gaveteiro.size());
 
         if (gaveteiro.isEmpty()) {
