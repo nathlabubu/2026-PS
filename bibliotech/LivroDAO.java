@@ -4,87 +4,52 @@ import java.sql.SQLException;
 
 public class LivroDAO {
 
-    public boolean adicionarLivro(
-            String titulo,
-            String autor,
-            int ano) {
+    public boolean adicionarLivro(String titulo, String autor, int ano) {
+        String sql = "INSERT INTO livros (titulo, autor, ano) VALUES (?, ?, ?)";
+        try (Connection conn = Conexao.getConexao();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        String sql = "INSERT INTO livros (titulo, autor, ano) " +
-                "VALUES (?, ?, ?)";
+            stmt.setString(1, titulo);
+            stmt.setString(2, autor);
+            stmt.setInt(3, ano);
 
-        try (Connection conexao = Conexao.conectar();
-                PreparedStatement comando = conexao.prepareStatement(sql)) {
-
-            comando.setString(1, titulo);
-            comando.setString(2, autor);
-            comando.setInt(3, ano);
-
-            int linhas = comando.executeUpdate();
-
-            return linhas > 0;
-
+            int linhasAfetadas = stmt.executeUpdate();
+            return linhasAfetadas > 0;
         } catch (SQLException e) {
-
-            System.out.println(
-                    "Erro ao adicionar livro: " +
-                            e.getMessage());
-
+            System.err.println("Erro ao adicionar livro: " + e.getMessage());
             return false;
         }
-
     }
 
-    public boolean atualizarLivro(
-            int id,
-            String titulo,
-            String autor,
-            int ano) {
+    public boolean atualizarLivro(int id, String titulo, String autor, int ano) {
+        String sql = "UPDATE livros SET titulo = ?, autor = ?, ano = ? WHERE id = ?";
+        try (Connection conn = Conexao.getConexao();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        String sql = "UPDATE livros " +
-                "SET titulo = ?, autor = ?, ano = ? " +
-                "WHERE id = ?";
+            stmt.setString(1, titulo);
+            stmt.setString(2, autor);
+            stmt.setInt(3, ano);
+            stmt.setInt(4, id);
 
-        try (Connection conexao = Conexao.conectar();
-                PreparedStatement comando = conexao.prepareStatement(sql)) {
-
-            comando.setString(1, titulo);
-            comando.setString(2, autor);
-            comando.setInt(3, ano);
-            comando.setInt(4, id);
-
-            int linhas = comando.executeUpdate();
-
-            return linhas > 0;
-
+            int linhasAfetadas = stmt.executeUpdate();
+            return linhasAfetadas > 0;
         } catch (SQLException e) {
-
-            System.out.println(
-                    "Erro ao atualizar livro: " +
-                            e.getMessage());
-
+            System.err.println("Erro ao atualizar livro: " + e.getMessage());
             return false;
         }
     }
 
     public boolean excluirLivro(int id) {
-
         String sql = "DELETE FROM livros WHERE id = ?";
+        try (Connection conn = Conexao.getConexao();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        try (Connection conexao = Conexao.conectar();
-                PreparedStatement comando = conexao.prepareStatement(sql)) {
+            stmt.setInt(1, id);
 
-            comando.setInt(1, id);
-
-            int linhas = comando.executeUpdate();
-
-            return linhas > 0;
-
+            int linhasAfetadas = stmt.executeUpdate();
+            return linhasAfetadas > 0;
         } catch (SQLException e) {
-
-            System.out.println(
-                    "Erro ao excluir livro: " +
-                            e.getMessage());
-
+            System.err.println("Erro ao excluir livro: " + e.getMessage());
             return false;
         }
     }

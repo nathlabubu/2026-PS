@@ -75,3 +75,17 @@ java TelaBiblioteca
 - RNF02: qualquer pessoa que abre a janela pode emprestar e devolver; nao ha login de bibliotecario.
 - Cadastrar livro e leitor pela janela: hoje o cadastro esta no `main` de `TelaBiblioteca`.
 - Guardar os dados: ao fechar o programa, os emprestimos se perdem.
+## 9. Persistência de Dados (Aula 42)
+
+- **Banco de Dados**: MariaDB / MySQL no ambiente GitHub Codespaces.
+- **Conexao.java**: Estabelece a conexão JDBC utilizando as variáveis de ambiente `DB_USER` e `DB_PASSWORD`.
+- **LivroDAO.java**: Responsável por realizar operações CRUD na tabela `livros`.
+  - `adicionarLivro()`: Insere um novo livro no banco de dados.
+  - `atualizarLivro()`: Atualiza título, autor e ano de publicação de um livro por ID.
+  - `excluirLivro()`: Remove um registro pelo seu ID.
+
+### Configuração das Variáveis de Ambiente
+Para executar localmente, defina as variáveis no terminal antes de rodar o programa:
+```bash
+export DB_USER="root"
+export DB_PASSWORD=""
