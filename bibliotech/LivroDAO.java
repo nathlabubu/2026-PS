@@ -1,12 +1,15 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LivroDAO {
 
     public boolean adicionarLivro(String titulo, String autor, int ano) {
         String sql = "INSERT INTO livros (titulo, autor, ano) VALUES (?, ?, ?)";
-        try (Connection conn = Conexao.getConexao();
+        try (Connection conn = Conexao.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, titulo);
@@ -23,7 +26,7 @@ public class LivroDAO {
 
     public boolean atualizarLivro(int id, String titulo, String autor, int ano) {
         String sql = "UPDATE livros SET titulo = ?, autor = ?, ano = ? WHERE id = ?";
-        try (Connection conn = Conexao.getConexao();
+        try (Connection conn = Conexao.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, titulo);
@@ -41,7 +44,7 @@ public class LivroDAO {
 
     public boolean excluirLivro(int id) {
         String sql = "DELETE FROM livros WHERE id = ?";
-        try (Connection conn = Conexao.getConexao();
+        try (Connection conn = Conexao.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -52,5 +55,33 @@ public class LivroDAO {
             System.err.println("Erro ao excluir livro: " + e.getMessage());
             return false;
         }
+    }
+
+    public List<String> listarLivros() {
+        List<String> livros = new ArrayList<>();
+        String sql = "SELECT id, titulo, autor, ano FROM livros ORDER BY titulo";
+
+        try (Connection conexao = Conexao.conectar();
+                PreparedStatement comando = conexao.prepareStatement(sql);
+                ResultSet resultado = comando.executeQuery()) {
+
+            while (resultado.next()) {
+                int id = resultado.getInt("id");
+                String titulo = resultado.getString("titulo");
+                String autor = resultado.getString("autor");
+                int ano = resultado.getInt("ano");
+
+                String livro = id + " - " +
+                        titulo + " - " +
+                        autor + " (" + ano + ")";
+
+                livros.add(livro);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar livros: " + e.getMessage());
+        }
+
+        return livros;
     }
 }
