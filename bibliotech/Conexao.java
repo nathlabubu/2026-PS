@@ -4,9 +4,9 @@ import java.sql.SQLException;
 
 public class Conexao {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/bibliotech?useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String URL = "jdbc:mariadb://localhost:3306/bibliotech";
 
-    public static Connection getConexao() throws SQLException {
+    public static Connection conectar() throws SQLException {
         String usuario = System.getenv("DB_USER");
         String senha = System.getenv("DB_PASSWORD");
 
