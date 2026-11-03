@@ -4,7 +4,7 @@ public class Livro {
     private String autor;
     private int ano;
 
-    // Construtor completo para registros do banco
+    // Construtor para registros do banco
     public Livro(int id, String titulo, String autor, int ano) {
         this.id = id;
         this.titulo = titulo;
